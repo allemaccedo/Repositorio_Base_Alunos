@@ -22,10 +22,15 @@ while True:
         print("Despesa Armazenada com sucesso")
 
     elif opcao == "2":
-        print("Gastos: ")
-        # mostar as despesas
+        print("Gastos:")
 
-        with open('despesa.txt','r') as arquivo:
-            despesa_extrato = arquivo.readlines()
+        with open('despesa.txt', 'r') as arquivo:
+                despesa_extrato = arquivo.readlines()
+
+            # Mostrar todas as despesas
         for numero, linha in enumerate(despesa_extrato, start=1):
-            print(f"{numero}. {linha.strip()}")
+                print(f"{numero}. {linha.strip()}")
+
+            # Somar as despesas
+        total_despesas = sum(float(linha.strip().split(': ')[1]) for linha in despesa_extrato)
+        print(f'Total de despesas: R$ {total_despesas:.2f}')
